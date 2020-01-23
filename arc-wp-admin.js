@@ -288,7 +288,9 @@ new Vue({
                     }
                 })
                 if (res.status >= 400) {
-                    this.errMsg = await res.json().then(d => d.message)
+                    const err = await res.json()
+                    this.errMsg = err.message
+                    Sentry.captureException(err)
                     return
                 }
 
@@ -297,8 +299,6 @@ new Vue({
                 await this.saveArcUser(userId)
 
                 this.transition(STATES.REGISTER_SUCCESS)
-            } catch (err) {
-                cl(err)
             } finally {
                 this.isLoading = false
             }
