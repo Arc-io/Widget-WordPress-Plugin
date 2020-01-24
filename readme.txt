@@ -52,7 +52,6 @@ You can configure your PayPal payments on the payouts page, here: [https://porta
 1. See how much money you've earned.
 2. Configuration is easy and just takes a few minutes.
 3. This is what Arc's widget looks like on your website.
-4. This is what Arc's widget looks like on your website, expanded.
 
 == Changelog ==
 
