@@ -7,8 +7,8 @@ Requires at least: 3.0.0
 Tested up to: 5.3.2
 Requires PHP: 5.4.0
 Stable tag: trunk
-License: [TODO(ansgar): publish to github and pick a license]
-License URI: [TODO(ansgar)]
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl.html
 
 Make money. Cut costs. Speed up your website.
 
