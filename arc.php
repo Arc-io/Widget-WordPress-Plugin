@@ -70,7 +70,7 @@ add_action('admin_enqueue_scripts', 'arc_admin_enqueue_script');
 function arc_admin_enqueue_script ($hook_suffix) {
     global $arc_settings_page;
     if ($arc_settings_page === $hook_suffix) {
-        wp_enqueue_script('arc_sentry', 'https://browser.sentry-cdn.com/5.11.1/bundle.min.js', [], false, true);
+        wp_enqueue_script('arc_sentry', plugins_url('assets/js/sentry.min.js', __FILE__), [], false, true);
         wp_enqueue_script('arc_vue', plugins_url('assets/js/vue.min.js', __FILE__), [], false, true);
         wp_enqueue_script('arc_admin_script', plugins_url('assets/js/arc-wp-admin.js', __FILE__), [], false, true);
         wp_enqueue_style('arc_bulma', plugins_url('assets/css/bulma.min.css', __FILE__));
