@@ -71,12 +71,12 @@ function arc_admin_enqueue_script ($hook_suffix) {
     global $arc_settings_page;
     if ($arc_settings_page === $hook_suffix) {
         wp_enqueue_script('arc_sentry', 'https://browser.sentry-cdn.com/5.11.1/bundle.min.js', [], false, true);
-        wp_enqueue_script('arc_vue', 'https://cdn.jsdelivr.net/npm/vue@2.6.11', [], false, true);
-        wp_enqueue_script('arc_admin_script', plugins_url('arc-wp-admin.js', __FILE__), [], false, true);
-        wp_enqueue_style('arc_bulma', 'https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css');
-        wp_enqueue_style('arc_admin_style', plugins_url('arc-wp-admin.css', __FILE__));
+        wp_enqueue_script('arc_vue', plugins_url('assets/js/vue.min.js', __FILE__), [], false, true);
+        wp_enqueue_script('arc_admin_script', plugins_url('assets/js/arc-wp-admin.js', __FILE__), [], false, true);
+        wp_enqueue_style('arc_bulma', plugins_url('assets/css/bulma.min.css', __FILE__));
+        wp_enqueue_style('arc_admin_style', plugins_url('assets/css/arc-wp-admin.css', __FILE__));
 
-        // Disable wordpress' retarded automatic emoji conversion.
+        // Disable wordpress' automatic emoji conversion.
         // https://wordpress.stackexchange.com/a/185578
         remove_action('admin_print_styles', 'print_emoji_styles');
         remove_action('wp_head', 'print_emoji_detection_script', 7);
