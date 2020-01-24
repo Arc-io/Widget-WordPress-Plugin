@@ -110,7 +110,7 @@ function arc_options_page () {
 
 add_filter('plugin_action_links_arc/arc.php', 'arc_settings_link' );
 function arc_settings_link ($links) {
-    $url = get_settings_page_url();
+    $url = arc_get_settings_page_url();
     $settings_link = "<a href='$url'>" . __( 'Settings' ) . '</a>';
 
 	array_push($links, $settings_link);
@@ -121,7 +121,7 @@ add_action('admin_notices', 'arc_setup_account_notice');
 function arc_setup_account_notice(){
     global $pagenow;
     if ($pagenow == 'plugins.php' && !get_option('arc_user_id')) {
-        $url = get_settings_page_url();
+        $url = arc_get_settings_page_url();
         $settings_link = "<a href='$url'>" . __( 'Set up' ) . '</a>';
         echo '<div class="notice notice-warning">
             <p>'.$settings_link.' your Arc account.</p>
@@ -155,7 +155,7 @@ function arc_update_arc_user () {
 register_activation_hook(__FILE__, 'arc_on_activate');
 function arc_on_activate () {
     if(!get_option('arc_property_id')){
-        update_option('arc_property_id', create_property_id());
+        update_option('arc_property_id', arc_create_property_id());
     }
 }
 
@@ -166,7 +166,7 @@ function arc_on_uninstall () {
     delete_option('arc_user_id');
 }
 
-function get_settings_page_url () {
+function arc_get_settings_page_url () {
     $url = esc_url(add_query_arg(
         'page',
         'arc-settings',
@@ -177,7 +177,7 @@ function get_settings_page_url () {
 }
 
 // https://stackoverflow.com/a/5438778/2498782
-function create_property_id () {
+function arc_create_property_id () {
     $bs58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
     $len = 8;
     $seed = str_split($bs58);
