@@ -1,4 +1,4 @@
-=== Arc - Monetize, cache, and accelerate your site ===
+=== Arc - Monetize, cache, and accelerate your website ===
 
 Contributors: arcio
 Donate link: https://arc.io/
