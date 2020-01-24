@@ -1,11 +1,11 @@
 <?php
 /**
-* Plugin Name: Arc - Monetize, cache, and accelerate
+* Plugin Name: Arc - Arc - Monetize, cache, and accelerate your website
 * Plugin URI: https://wordpress.org/plugins/arc
 * Description: The world's first Content Delivery Network (CDN) that pays you to use it.
-* Version: 0.1
+* Version: 1.0
 * Author: Arc
-* Author URI: https://arc.io/main
+* Author URI: https://arc.io/
 **/
 
 // Apparently this is good for security
