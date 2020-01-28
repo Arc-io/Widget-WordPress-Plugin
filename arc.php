@@ -137,15 +137,11 @@ function arc_update_arc_user () {
     }
 
     $email = sanitize_email($_POST['email']);
-    $userId = $_POST['userId'];
-    
-    if (!wp_is_uuid($userId)) {
-        status_header(400);
-        die();
-    }
+    $userId = wp_is_uuid($_POST['userId']) ? $_POST['userId'] : 0;
 
     update_option('arc_email', $email);
     update_option('arc_user_id', $userId);
+    
     die();
 }
 
