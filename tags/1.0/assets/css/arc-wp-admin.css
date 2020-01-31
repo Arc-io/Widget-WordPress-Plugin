@@ -1,0 +1,25 @@
+#arc-wp-admin-app {
+    padding: 1rem 0;
+    max-width: 40rem;
+}
+
+#arc-wp-admin-app .subtitle {
+    padding-left: 0;
+}
+
+#arc-wp-admin-app p {
+    font-size: 14px;
+    margin-bottom: 1rem;
+}
+
+.update-url {
+    font-weight: normal;
+    font-size: .75rem;
+}
+
+.label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
