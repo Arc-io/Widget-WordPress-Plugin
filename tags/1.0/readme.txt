@@ -37,7 +37,7 @@ After activating this plugin, complete the installation on this plugin's setting
 
 = Where does the money I get paid come from? =
 
-Arc is a two-sided market. On one side of the market, websites buy a fast, low-cost peer-to-peer CDN. On the other side, websites make money by contributing bandwidth to the the p2p CDN. Arc's widget provides access to both sides.
+Arc is a two-sided market. On one side of the market, websites buy a fast, low-cost peer-to-peer CDN. On the other side, websites make money by contributing bandwidth to the the peer-to-peer CDN. Arc's widget provides access to both sides.
 
 Most websites can both pay less for Arc's new, peer-to-peer CDN and simultaneously make money. Some websites, like content-heavy sites, buy more CDN than they earn in Arc revenue. Other sites, like those with lots of users, earn more in Arc revenue than they buy in CDN.
 
