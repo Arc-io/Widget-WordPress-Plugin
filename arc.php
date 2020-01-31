@@ -1,7 +1,7 @@
 <?php
 /**
 * Plugin Name: Arc - Monetize, cache, and accelerate your website
-* Plugin URI: https://wordpress.org/plugins/arc
+* Plugin URI: https://wordpress.org/plugins/arc-monetize-cache-and-accelerate
 * Description: The world's first Content Delivery Network (CDN) that pays you to use it.
 * Version: 1.0
 * Author: Arc
@@ -141,7 +141,7 @@ function arc_update_arc_user () {
 
     update_option('arc_email', $email);
     update_option('arc_user_id', $userId);
-    
+
     die();
 }
 
