@@ -227,8 +227,7 @@ new Vue({
             STATES,
             isLoading: false,
             portalUrl: PORTAL_VUE_ORIGIN,
-            arcUserId: ARC_USER_ID,
-            arcEmail: WP_ADMIN_EMAIL || '',
+            arcEmail: ARC_EMAIL || WP_ADMIN_EMAIL || '',
             paypalEmail: WP_ADMIN_EMAIL || '',
             arcPassword: this.createRandomString(16),
             propertyId: PROPERTY_ID,
@@ -256,8 +255,8 @@ new Vue({
         }
     },
     created () {
-        if (ARC_USER_ID) {
-            // User completed registration and received a userId
+        if (ARC_EMAIL) {
+            // User completed registration
             this.transition(STATES.REFER_TO_PORTAL)
         } else {
             try {
@@ -294,20 +293,17 @@ new Vue({
                     return
                 }
 
-                const { UserSub: userId } = await res.json()
-
-                await this.saveArcUser(userId)
+                await this.saveArcUser()
 
                 this.transition(STATES.REGISTER_SUCCESS)
             } finally {
                 this.isLoading = false
             }
         },
-        async saveArcUser (userId) {
+        async saveArcUser () {
             const data = new FormData()
             data.append('action', 'update_arc_user')
             data.append('email', this.arcEmail)
-            data.append('userId', userId)
             data.append('nonce', WP_AJAX_NONCE)
 
             const res = await fetch(WP_AJAX_URL, {

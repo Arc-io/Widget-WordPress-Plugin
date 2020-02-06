@@ -101,7 +101,6 @@ function arc_options_page () {
         const WP_AJAX_URL       = "'.admin_url('admin-ajax.php').'";
         const WP_AJAX_NONCE     = "'.wp_create_nonce('update_arc_user').'";
         const WP_ADMIN_EMAIL    = "'.get_option('admin_email').'";
-        const ARC_USER_ID       = "'.get_option('arc_user_id').'";
         const ARC_EMAIL         = "'.get_option('arc_email').'";
         const PROPERTY_ID       = "'.get_option('arc_property_id').'";
     </script>
@@ -120,7 +119,7 @@ function arc_settings_link ($links) {
 add_action('admin_notices', 'arc_setup_account_notice');
 function arc_setup_account_notice(){
     global $pagenow;
-    if ($pagenow == 'plugins.php' && !get_option('arc_user_id')) {
+    if ($pagenow == 'plugins.php' && !get_option('arc_email')) {
         $url = arc_get_settings_page_url();
         $settings_link = "<a href='$url'>" . __( 'Set up' ) . '</a>';
         echo '<div class="notice notice-warning">
@@ -137,10 +136,7 @@ function arc_update_arc_user () {
     }
 
     $email = sanitize_email($_POST['email']);
-    $userId = wp_is_uuid($_POST['userId']) ? $_POST['userId'] : 0;
-
     update_option('arc_email', $email);
-    update_option('arc_user_id', $userId);
 
     die();
 }
@@ -167,7 +163,6 @@ register_uninstall_hook(__FILE__, 'arc_on_uninstall');
 function arc_on_uninstall () {
     delete_option('arc_property_id');
     delete_option('arc_email');
-    delete_option('arc_user_id');
 }
 
 function arc_get_settings_page_url () {
