@@ -68,10 +68,12 @@ function arc_add_admin_menu () {
 
 add_action('admin_enqueue_scripts', 'arc_admin_enqueue_script');
 function arc_admin_enqueue_script ($hook_suffix) {
+    $IS_PROD = (getenv('ARC_ENV') ?: 'production') === 'production';
     global $arc_settings_page;
     if ($arc_settings_page === $hook_suffix) {
         wp_enqueue_script('arc_sentry', plugins_url('assets/js/sentry.min.js', __FILE__), [], false, true);
-        wp_enqueue_script('arc_vue', plugins_url('assets/js/vue.min.js', __FILE__), [], false, true);
+        $vueFilename = $IS_PROD ? 'vue.min.js' : 'vue.dev.js';
+        wp_enqueue_script('arc_vue', plugins_url('assets/js/'.$vueFilename, __FILE__), [], false, true);
         wp_enqueue_script('arc_admin_script', plugins_url('assets/js/arc-wp-admin.js', __FILE__), [], false, true);
         wp_enqueue_style('arc_bulma', plugins_url('assets/css/bulma.min.css', __FILE__));
         wp_enqueue_style('arc_admin_style', plugins_url('assets/css/arc-wp-admin.css', __FILE__));
