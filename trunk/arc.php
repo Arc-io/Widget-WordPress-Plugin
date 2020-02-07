@@ -140,6 +140,11 @@ function arc_update_arc_user () {
     $email = sanitize_email($_POST['email']);
     update_option('arc_email', $email);
 
+    $propertyId = $_POST['propertyId'];
+    if (arc_is_property_id($propertyId)) {
+        update_option('arc_property_id', $propertyId);
+    }
+
     die();
 }
 
@@ -189,6 +194,11 @@ function arc_create_property_id () {
     }
 
     return $propertyId;
+}
+
+function arc_is_property_id ($propertyId) {
+    $propertyIdRegex = '/^[1-9A-HJ-NP-Za-km-z]{8}$/';
+    return preg_match($propertyIdRegex, $propertyId);
 }
 
 ?>
