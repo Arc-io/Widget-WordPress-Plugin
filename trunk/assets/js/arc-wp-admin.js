@@ -312,6 +312,7 @@ new Vue({
                         domains: this.domains.map(d => d.val),
                         paypalEmail: this.paypalEmail,
                         propertyId: this.propertyId,
+                        websiteUrl: WP_HOME_URL,
                     })
                 }]
             }
