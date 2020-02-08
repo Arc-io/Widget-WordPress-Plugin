@@ -148,28 +148,34 @@ function arc_update_arc_user () {
     die();
 }
 
-// TODO: Allow user to update propertyId, if they change Arc accounts,
-// already had an account, etc.
-//
-// add_action('wp_ajax_update_property_id', 'arc_update_property_id');
-// function arc_update_property_id () {
-//     // TODO: Check nonce
-//     $propertyId = $_POST['propertyId'];
-//     update_option('arc_property_id', $propertyId);
-//     die();
-// }
-
 register_activation_hook(__FILE__, 'arc_on_activate');
 function arc_on_activate () {
     if(!get_option('arc_property_id')){
         update_option('arc_property_id', arc_create_property_id());
     }
+
+    $endpoint = 'wpPluginInstalled';
+    arc_record_lifecycle_event($endpoint);
 }
 
 register_uninstall_hook(__FILE__, 'arc_on_uninstall');
 function arc_on_uninstall () {
     delete_option('arc_property_id');
     delete_option('arc_email');
+
+    $endpoint = 'wpPluginUninstalled';
+    arc_record_lifecycle_event($endpoint);
+}
+
+function arc_record_lifecycle_event ($endpoint) {
+    $url = 'https://portal.arc.io/api/'.$endpoint;
+
+    wp_remote_post($url, [
+        'body' => [
+            'email' => get_option('admin_email'),
+            'website' => home_url(),
+        ],
+    ]);
 }
 
 function arc_get_settings_page_url () {
