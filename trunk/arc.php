@@ -171,10 +171,11 @@ function arc_record_lifecycle_event ($endpoint) {
     $url = 'https://portal.arc.io/api/'.$endpoint;
 
     wp_remote_post($url, [
-        'body' => [
+        'headers' => ['Content-Type' => 'application/json'],
+        'body' => json_encode([
             'email' => get_option('admin_email'),
             'website' => home_url(),
-        ],
+        ]),
     ]);
 }
 
