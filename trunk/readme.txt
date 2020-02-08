@@ -6,7 +6,7 @@ Tags: Arc, SEO, CDN, speed, performance, cache, content delivery network, free, 
 Requires at least: 3.0.0
 Tested up to: 5.3.2
 Requires PHP: 5.4.0
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -57,3 +57,6 @@ You can configure your PayPal payments on the payouts page, here: [https://porta
 
 = 1.0 =
 * Initial release.
+
+= 1.1 =
+* Added settings page to link an existing Arc account.
