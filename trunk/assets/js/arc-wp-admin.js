@@ -123,9 +123,9 @@ Vue.component('ReferToPortal', {
         portalUrl: String
     },
     computed: {
-        accountPageUrl () { return `${this.portalUrl}/account` },
-        earningsPageUrl () { return `${this.portalUrl}/publishers/earnings` },
-        cdnPageUrl () { return `${this.portalUrl}/cloud/auto-cdn` },
+        accountPageUrl: vm => `${vm.portalUrl}/account`,
+        earningsPageUrl: vm => `${vm.portalUrl}/earnings`,
+        cdnPageUrl: vm => `${vm.portalUrl}/installation#complete-arc's-cdn-setup`,
     }
 })
 
