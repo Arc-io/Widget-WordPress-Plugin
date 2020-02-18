@@ -27,13 +27,21 @@ function arc_add_widget() {
 // TODO: This wordpress installation is run in Docker, so reverse proxying to
 // the host machines localhost in a way that works cross OS is tough.
 // For now, just reverse proxy the production widget.
+//
+// The .js extension is omitted b/c the web server swallows the request.
+// Without the extension, the request reaches PHP.
 add_action('init', 'arc_reverse_proxy');
 function arc_reverse_proxy () {
     $WIDGET_ORIGIN = 'https://arc.io';
-    if ($_SERVER["REQUEST_URI"] === '/arc-sw') {
-		return arc_get_script($WIDGET_ORIGIN.'/arc-sw.js');
-    } else if ($_SERVER["REQUEST_URI"] === '/arc-widget') {
-		return arc_get_script($WIDGET_ORIGIN.'/widget.js');
+    $method = $_SERVER['REQUEST_METHOD'];
+    $url = $_SERVER["REQUEST_URI"];
+
+    if (in_array($method, ['GET', 'HEAD'])) {
+        if ($url === '/arc-sw') {
+            return arc_get_script($WIDGET_ORIGIN.'/arc-sw.js', $method);
+        } else if ($url === '/arc-widget') {
+            return arc_get_script($WIDGET_ORIGIN.'/widget.js', $method);
+        }
     }
 }
 
@@ -41,7 +49,7 @@ function arc_reverse_proxy () {
 // Cache reverse proxied scripts for an hour.
 // Transients API writes to the internal mysql db
 // and thus has all the performance implications thereof
-function arc_get_script ($url) {
+function arc_get_script ($url, $method = 'GET') {
     $response = get_transient($url);
     if ($response === false) {
         $response = wp_remote_get($url);
@@ -51,10 +59,20 @@ function arc_get_script ($url) {
 	foreach($response['headers'] as $i => $item) {
         if ($i === 'content-encoding') {
 			continue;
-		}
-		header("{$i}: {$item}");
-	}
-    echo $response['body'];
+		} else if ($i === 'content-type'){
+            // https://plataoplomo.com.br/arc-sw content type is text/html
+            // possibly due to their CDN? Hardcode the content type just
+            // to be safe.
+            header("content-type: application/javascript");
+        } else {
+            header("{$i}: {$item}");
+        }
+    }
+
+    if ($method === 'GET') { // HEAD responses don't have a body.
+        echo $response['body'];
+    }
+
     die();
 }
 
