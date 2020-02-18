@@ -45,7 +45,7 @@ Most websites can both pay less for Arc's new, peer-to-peer CDN and simultaneous
 
 You get paid via PayPal -- daily, weekly, bimonthly, or monthly.
 
-You can configure your PayPal payments on the payouts page, here: [https://portal.arc.io/publishers/earnings](https://portal.arc.io/publishers/earnings).
+You can configure your PayPal payments on the payouts page, here: [https://portal.arc.io/earnings](https://portal.arc.io/earnings).
 
 == Screenshots ==
 
