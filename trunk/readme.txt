@@ -1,4 +1,4 @@
-=== Arc - Monetize, cache, and accelerate your website ===
+=== Arc - the CDN that pays you ===
 
 Contributors: arcio
 Donate link: https://arc.io/
@@ -10,36 +10,37 @@ Stable tag: 1.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Make money. Cut costs. Speed up your website.
-
-Arc is the world's first Content Delivery Network (CDN) that pays you to use it.
+Monetize and speed up your website at the same time with Arc's unique plugin for WordPress.
 
 
 == Description ==
 
-This plugin adds Arc ([https://arc.io/](https://arc.io/)) to your website.
+Arc ([https://arc.io/](https://arc.io/)) offers digital publishers a new currency to sustain their businesses: unused device bandwidth from users. Your visitors will be crowdfunding your infrastructure in real time with spare bandwidth, not their wallets or personal data.
 
-Estimate how much money your website could make here: [https://arc.io/#estimateEarnings](https://arc.io/#estimateEarnings).
+Download this plugin to enable Arc's widget on your pages: while users browse your sites, with no noticeable change in performance for them, the widget aggregates their unused internet connection to help power yours and other sites: a people-powered content delivery network (CDN). 
 
-While users browse your site, Arc unites some of their spare device bandwidth into a peer-to-peer CDN. Websites rent this Content Delivery Network (CDN), revenue is pooled, and Arc pays you for time users spend at your site.
-
-You get a faster site and make money, without ads.
-
-Arc uses the latest HTML5 APIs — WebRTC to connect browsers, ServiceWorker to fulfill requests, IndexedDB to cache data, and WebCrypto to do it all securely — to create a browser-based CDN in a single <script> tag. And the user experience is never impacted. Ever. Arc uses only a small portion of spare bandwidth, imperceptible CPU, 100MB of cache, and only runs when a device is both powered and connected to Wi-Fi.
+Your site performance improves, and the longer users stay on your site, the more that site offsets hosting costs and earns passive revenue diversified from ads, donations and subscriptions.
 
 
 == Installation ==
 
-After activating this plugin, complete the installation on this plugin's settings page (Plugins > Arc).
+After activating this plugin, complete the installation on this plugin's settings page (Plugins > Arc). Configuration is easy and just takes a few minutes.
 
 
 == Frequently Asked Questions ==
 
+= How does the widget work? =
+
+Arc uses the latest HTML5 APIs — WebRTC to connect browsers, ServiceWorker to fulfill requests, IndexedDB to cache data, and WebCrypto to do it all securely — to create a browser-based CDN in a single <script> tag. And the user experience is never impacted. Ever. Arc uses only a small portion of spare bandwidth, imperceptible CPU, 100MB of cache, and only runs when a device is both powered and connected to Wi-Fi.
+
+= How much money can I make with Arc? =
+
+Estimate how much money your website could make here: [https://arc.io/#estimateEarnings](https://arc.io/#estimateEarnings).
+Most websites can both pay less for Arc's new, peer-to-peer CDN and simultaneously make money. Some websites, like content-heavy sites, buy more CDN than they earn in Arc revenue. Other sites, like those with lots of users, earn more in Arc revenue than they buy in CDN.
+
 = Where does the money I get paid come from? =
 
 Arc is a two-sided market. On one side of the market, websites buy a fast, low-cost peer-to-peer CDN. On the other side, websites make money by contributing bandwidth to the the peer-to-peer CDN. Arc's widget provides access to both sides.
-
-Most websites can both pay less for Arc's new, peer-to-peer CDN and simultaneously make money. Some websites, like content-heavy sites, buy more CDN than they earn in Arc revenue. Other sites, like those with lots of users, earn more in Arc revenue than they buy in CDN.
 
 = How do I get paid? =
 
