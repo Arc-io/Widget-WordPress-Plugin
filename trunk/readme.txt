@@ -15,28 +15,29 @@ Monetize and speed up your website at the same time with Arc's unique plugin for
 
 == Description ==
 
-Arc ([https://arc.io/](https://arc.io/)) offers digital publishers a new currency to sustain their businesses: unused device bandwidth from users. Your visitors will be crowdfunding your infrastructure in real time with spare bandwidth, not their wallets or personal data.
+Arc ([https://arc.io/](https://arc.io/)) offers websites a new currency to make money: unused device bandwidth from users.
 
-Download this plugin to enable Arc's widget on your pages: while users browse your sites, with no noticeable change in performance for them, the widget aggregates their unused internet connection to help power yours and other sites: a people-powered content delivery network (CDN). 
+How? While users browse your site, Arc uses the latest HTML5 APIs to turn their browsers into little servers in a peer-to-peer [Content Delivery Network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN). Your users, and users on other sites with Arc, cooperatively load content from each other instead of from slower servers. We rent this fast, people-powered CDN to you and other websites, and you get paid for the bandwidth your users share while they browse your site.
 
-Your site performance improves, and the longer users stay on your site, the more that site offsets hosting costs and earns passive revenue diversified from ads, donations and subscriptions.
+This plugin adds Arc to your website. Once installed, your users get a faster experience with Arc's CDN and you start making money. Estimate how much money you could make here: [https://arc.io/#estimateEarnings](https://arc.io/#estimateEarnings). See Arc's CDN prices here: [https://arc.io/#pricing](https://arc.io/#pricing).
 
 
 == Installation ==
 
-After activating this plugin, complete the installation on this plugin's settings page (Plugins > Arc). Configuration is easy and just takes a few minutes.
+After installing this plugin, complete the installation on this plugin's settings page (Plugins > Arc). Configuration is easy and just takes a few minutes.
 
 
 == Frequently Asked Questions ==
 
-= How does the widget work? =
-
-Arc uses the latest HTML5 APIs — WebRTC to connect browsers, ServiceWorker to fulfill requests, IndexedDB to cache data, and WebCrypto to do it all securely — to create a browser-based CDN in a single <script> tag. And the user experience is never impacted. Ever. Arc uses only a small portion of spare bandwidth, imperceptible CPU, 100MB of cache, and only runs when a device is both powered and connected to Wi-Fi.
-
 = How much money can I make with Arc? =
 
 Estimate how much money your website could make here: [https://arc.io/#estimateEarnings](https://arc.io/#estimateEarnings).
-Most websites can both pay less for Arc's new, peer-to-peer CDN and simultaneously make money. Some websites, like content-heavy sites, buy more CDN than they earn in Arc revenue. Other sites, like those with lots of users, earn more in Arc revenue than they buy in CDN.
+
+Most websites can both pay less for Arc's new, peer-to-peer CDN and simultaneously make money. Some websites, like content-heavy sites, buy more CDN than they earn in Arc revenue. Other sites, like those with many users, earn more in Arc revenue than they buy in CDN.
+
+= How does the widget work? =
+
+Arc creates a communal, distributed CDN with the latest HTML5 APIs — [WebRTC](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API) to connect browsers, [ServiceWorker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) to fulfill requests, [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) to cache data, and [WebCrypto](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) to do it all securely. And it never impacts the user experience. Ever. Arc uses only a small portion of spare bandwidth, imperceptible CPU, 100MB of browser cache, and only runs when a device is both powered and connected to Wi-Fi.
 
 = Where does the money I get paid come from? =
 
