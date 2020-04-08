@@ -1,4 +1,4 @@
-=== Arc - the CDN that pays you ===
+=== Arc – A CDN to monetize, cache, and accelerate your website ===
 
 Contributors: arcio
 Donate link: https://arc.io/
@@ -10,7 +10,7 @@ Stable tag: 1.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Monetize and speed up your website at the same time with Arc's unique plugin for WordPress.
+Make money and speed up your website at the same time. Arc is the world's first Content Delivery Network (CDN) that pays you to use it.
 
 
 == Description ==
