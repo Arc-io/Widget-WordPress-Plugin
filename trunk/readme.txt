@@ -57,8 +57,8 @@ You can configure your PayPal payments on the payouts page, here: [https://porta
 
 == Changelog ==
 
-= 1.0 =
-* Initial release.
-
 = 1.1 =
 * Added settings page to link an existing Arc account.
+
+= 1.0 =
+* Initial release.
