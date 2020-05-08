@@ -18,29 +18,32 @@ add_action('wp_head', 'arc_add_widget');
 function arc_add_widget() {
     $IS_PROD = (getenv('ARC_ENV') ?: 'production') === 'production';
     $WIDGET_ORIGIN = getenv('WIDGET_ORIGIN') ?: 'https://arc.io';
-    $filename = $IS_PROD ? '/arc-widget' : $WIDGET_ORIGIN.'/widget.js';
+    $filename = '/arc-widget';
     $propertyId = get_option('arc_property_id', '');
 
     echo '<script async src="'.$filename.'#'.$propertyId.'?CDN=True&env=wp"></script>';
 }
 
-// TODO: This wordpress installation is run in Docker, so reverse proxying to
-// the host machines localhost in a way that works cross OS is tough.
-// For now, just reverse proxy the production widget.
-//
 // The .js extension is omitted b/c the web server swallows the request.
 // Without the extension, the request reaches PHP.
 add_action('init', 'arc_reverse_proxy');
 function arc_reverse_proxy () {
+    $IS_PROD = (getenv('ARC_ENV') ?: 'production') === 'production';
     $WIDGET_ORIGIN = 'https://arc.io';
     $method = $_SERVER['REQUEST_METHOD'];
     $url = $_SERVER["REQUEST_URI"];
+    $SW_PROXY_PATH = '/arc-sw';
+    $WIDGET_PROXY_PATH = '/arc-widget';
 
     if (in_array($method, ['GET', 'HEAD'])) {
-        if ($url === '/arc-sw') {
-            return arc_get_script($WIDGET_ORIGIN.'/arc-sw.js', $method);
-        } else if ($url === '/arc-widget') {
-            return arc_get_script($WIDGET_ORIGIN.'/widget.js', $method);
+        if ($url === $SW_PROXY_PATH) {
+            return $IS_PROD
+                ? arc_get_script($WIDGET_ORIGIN.'/arc-sw.js', $method)
+                : arc_load_dev_script('/arc-dev-scripts/sw/arc-sw.js');
+        } else if ($url === $WIDGET_PROXY_PATH) {
+            return $IS_PROD
+                ? arc_get_script($WIDGET_ORIGIN.'/widget.js', $method)
+                : arc_load_dev_script('/arc-dev-scripts/widget/widget.js');
         }
     }
 }
@@ -53,6 +56,14 @@ function arc_get_script ($url, $method = 'GET') {
     $response = get_transient($url);
     if ($response === false) {
         $response = wp_remote_get($url);
+    }
+
+    if (arc_is_response_error($response)) {
+        // Older versions mistakenly stored error responses, delete them now.
+        delete_transient($url);
+        status_header(400);
+        return die();
+    } else {
         set_transient($url, $response, 1 * HOUR_IN_SECONDS);
     }
 
@@ -73,6 +84,20 @@ function arc_get_script ($url, $method = 'GET') {
         echo $response['body'];
     }
 
+    die();
+}
+
+// Return true for connection errors and statuses >= 400
+function arc_is_response_error ($response) {
+    $status = wp_remote_retrieve_response_code($response);
+    $isHttpErr = $status >= 400;
+    return is_wp_error($response) || $isHttpErr;
+}
+
+# In dev, the js files are inserted into the container via Docker volume binds.
+function arc_load_dev_script ($path) {
+    header('content-type: application/javascript');
+    echo file_get_contents(WP_CONTENT_DIR.$path);
     die();
 }
 
