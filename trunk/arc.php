@@ -31,16 +31,16 @@ function arc_reverse_proxy () {
     $IS_PROD = (getenv('ARC_ENV') ?: 'production') === 'production';
     $WIDGET_ORIGIN = 'https://arc.io';
     $method = $_SERVER['REQUEST_METHOD'];
-    $url = $_SERVER["REQUEST_URI"];
+    $path = strtok($_SERVER["REQUEST_URI"], '?');
     $SW_PROXY_PATH = '/arc-sw';
     $WIDGET_PROXY_PATH = '/arc-widget';
 
     if (in_array($method, ['GET', 'HEAD'])) {
-        if ($url === $SW_PROXY_PATH) {
+        if ($path === $SW_PROXY_PATH) {
             return $IS_PROD
                 ? arc_get_script($WIDGET_ORIGIN.'/arc-sw.js', $method)
                 : arc_load_dev_script('/arc-dev-scripts/sw/arc-sw.js');
-        } else if ($url === $WIDGET_PROXY_PATH) {
+        } else if ($path === $WIDGET_PROXY_PATH) {
             return $IS_PROD
                 ? arc_get_script($WIDGET_ORIGIN.'/widget.js', $method)
                 : arc_load_dev_script('/arc-dev-scripts/widget/widget.js');
@@ -68,9 +68,11 @@ function arc_get_script ($url, $method = 'GET') {
     }
 
 	foreach($response['headers'] as $i => $item) {
+        // Wordpress does something funky with compressed responses,
+        // don't touch this header.
         if ($i === 'content-encoding') {
 			continue;
-		} else if ($i === 'content-type'){
+		} else if ($i === 'content-type') {
             // https://plataoplomo.com.br/arc-sw content type is text/html
             // possibly due to their CDN? Hardcode the content type just
             // to be safe.
