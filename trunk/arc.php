@@ -64,15 +64,15 @@ function arc_get_script ($url, $method = 'GET') {
     $response = get_transient($url);
     if ($response === false) {
         $response = wp_remote_get($url);
-    }
 
-    if (arc_is_response_error($response)) {
-        // Older versions mistakenly stored error responses, delete them now.
-        delete_transient($url);
-        status_header(400);
-        return die();
-    } else {
-        set_transient($url, $response, 1 * HOUR_IN_SECONDS);
+        if (arc_is_response_error($response)) {
+            // Older versions mistakenly stored error responses, delete them now.
+            delete_transient($url);
+            status_header(400);
+            return die();
+        } else {
+            set_transient($url, $response, 1 * HOUR_IN_SECONDS);
+        }
     }
 
 	foreach($response['headers'] as $i => $item) {
