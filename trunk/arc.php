@@ -3,7 +3,7 @@
 * Plugin Name: Arc - Monetize, cache, and accelerate your website
 * Plugin URI: https://wordpress.org/plugins/arc-monetize-cache-and-accelerate
 * Description: The world's first Content Delivery Network (CDN) that pays you to use it.
-* Version: 1.1.4
+* Version: 1.1.5
 * Author: Arc
 * Author URI: https://arc.io/
 **/
@@ -21,7 +21,15 @@ function arc_add_widget() {
     $filename = '/arc-widget';
     $propertyId = get_option('arc_property_id', '');
 
-    echo '<script async src="'.$filename.'#'.$propertyId.'?CDN=True&env=wp"></script>';
+    // https://wordpress.stackexchange.com/a/285644
+    $plugin_data = get_file_data(__FILE__, array('Version' => 'Version'), false);
+    $plugin_version = $plugin_data['Version'];
+
+    $path = $filename.'#'.$propertyId;
+    $query = 'CDN=True&env=wp&wpPluginVersion='.$plugin_version;
+    $url = $path.'?'.$query;
+
+    echo '<script async src="'.$url.'"></script>';
 }
 
 // The .js extension is omitted b/c the web server swallows the request.
