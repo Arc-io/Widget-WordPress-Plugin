@@ -176,9 +176,14 @@ function arc_setup_account_notice(){
     global $pagenow;
     if ($pagenow == 'plugins.php' && !get_option('arc_email')) {
         $url = arc_get_settings_page_url();
-        $settings_link = "<a href='$url'>" . __( 'Set up' ) . '</a>';
-        echo '<div class="notice notice-warning">
-            <p>'.$settings_link.' your Arc account.</p>
+        $settings_link = "<a href='$url'>" . __( 'here' ) . '</a>';
+        $emoji = '<img width="25" style="margin-right: 5px" alt="🎉" src="https://twemoji.maxcdn.com/v/latest/svg/1f389.svg">';
+        echo '<div class="notice notice-warning" style="display: flex">
+            '.$emoji.'
+            <p>
+                The Arc plugin requires an Arc account.
+                Click '.$settings_link.' to setup your Arc account.
+            </p>
         </div>';
     }
 }
