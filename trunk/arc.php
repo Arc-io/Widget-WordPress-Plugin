@@ -201,11 +201,26 @@ function arc_update_arc_user () {
     die();
 }
 
+// Redirect to options page after activation.
+// https://stackoverflow.com/a/11878359/2498782
+add_action('admin_init', 'arc_plugin_redirect');
+function arc_plugin_redirect() {
+    if (get_option('arc_do_activation_redirect', false)) {
+        delete_option('arc_do_activation_redirect');
+
+        if(!isset($_GET['activate-multi'])) {
+            wp_redirect(arc_get_settings_page_url());
+        }
+    }
+}
+
+
 register_activation_hook(__FILE__, 'arc_on_activate');
 function arc_on_activate () {
     if(!get_option('arc_property_id')){
         update_option('arc_property_id', arc_create_property_id());
     }
+    add_option('arc_do_activation_redirect', true);
 
     $endpoint = 'wpPluginInstalled';
     arc_record_lifecycle_event($endpoint);

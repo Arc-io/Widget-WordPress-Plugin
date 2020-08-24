@@ -180,7 +180,7 @@ Vue.component('LinkExistingAccount', {
         widgetScript: '<script async src="https://arc.io/widget.js#GjcF5zo4"><\/script>'
     }),
     computed: {
-        widgetPageUrl () { return `${this.portalUrl}/publishers/widget` },
+        widgetPageUrl: vm => `${vm.portalUrl}/installation`,
     }
 })
 
