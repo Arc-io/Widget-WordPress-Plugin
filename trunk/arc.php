@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Arc - Monetize, cache, and accelerate your website
 * Plugin URI: https://wordpress.org/plugins/arc-monetize-cache-and-accelerate
-* Description: The world's first Content Delivery Network (CDN) that pays you to use it.
+* Description: The world's first Content Delivery Network (CDN) that pays you to use it. To get started: activate the Arc plugin, then go to the Arc Settings page to set up your Arc account.
 * Version: 1.1.6
 * Author: Arc
 * Author URI: https://arc.io/
