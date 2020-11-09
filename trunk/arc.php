@@ -26,7 +26,7 @@ function arc_add_widget() {
     $plugin_version = $plugin_data['Version'];
 
     $path = $filename.'#'.$propertyId;
-    $query = 'CDN=True&env=wp&wpPluginVersion='.$plugin_version;
+    $query = 'env=wp&wpPluginVersion='.$plugin_version;
     $url = $path.'?'.$query;
 
     echo '<script async src="'.$url.'"></script>';
