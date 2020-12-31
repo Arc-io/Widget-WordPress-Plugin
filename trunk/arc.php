@@ -77,7 +77,7 @@ function arc_get_script ($url, $method = 'GET') {
         }
     }
 
-	foreach($response['headers'] as $i => $item) {
+    foreach($response['headers'] as $i => $item) {
         // Wordpress does something funky with compressed responses,
         // don't touch this header.
         if ($i === 'content-encoding') {
@@ -169,8 +169,8 @@ function arc_settings_link ($links) {
     $url = arc_get_settings_page_url();
     $settings_link = "<a href='$url'>" . __( 'Settings' ) . '</a>';
 
-	array_push($links, $settings_link);
-	return $links;
+    array_push($links, $settings_link);
+    return $links;
 }
 
 add_action('admin_notices', 'arc_setup_account_notice');
