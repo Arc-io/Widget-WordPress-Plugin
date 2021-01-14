@@ -5,7 +5,7 @@
 * Description: The world's first Content Delivery Network (CDN) that
 *   pays you to use it. To get started: activate the Arc plugin, then go
 *   to the Arc Settings page to set up your Arc account.
-* Version: 1.1.8
+* Version: 1.1.9
 * Author: Arc
 * Author URI: https://arc.io/
 **/
