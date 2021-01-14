@@ -4,7 +4,7 @@ Contributors: arcio
 Donate link: https://arc.io/
 Tags: Arc, SEO, CDN, speed, performance, cache, content delivery network, free, monetize, ads, static, search engines
 Requires at least: 3.0.0
-Tested up to: 5.3.2
+Tested up to: 5.6
 Requires PHP: 5.4.0
 Stable tag: 1.1.8
 License: GPLv3
