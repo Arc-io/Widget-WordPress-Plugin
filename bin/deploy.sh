@@ -35,25 +35,19 @@ then
     exit 1
 fi
 
-gitTip="You should've already pushed version $version to the remote git repo."
-
 trunkVersionLine=$(grep '^* Version' trunk/arc.php)
 trunkVersion=${trunkVersionLine/* Version: /''}
-
-if [[ "$version" != "$trunkVersion" ]]
-then
-    echo "Version $version does not match the version in trunk/arc.php ($trunkVersion)"
-    echo $gitTip
-    exit 1
-fi
 
 readmeVersionLine=$(grep '^Stable tag' trunk/readme.txt)
 readmeVersion=${readmeVersionLine/Stable tag: /''}
 
-if [[ "$version" != "$readmeVersion" ]]
+if [[ "$version" != "$trunkVersion" || "$version" != "$readmeVersion" ]]
 then
-    echo "Version $version does not match the version in trunk/readme.txt ($readmeVersion)"
-    echo $gitTip
+    echo "Version mismatch detected"
+    echo
+    echo "1. Ensure that the \"Version:\" in trunk/arc.php and \"Stable tag:\" in trunk/readme.txt are both $version."
+    echo "2. Commit and push to the remote git repo."
+    echo "3. Run this script again."
     exit 1
 fi
 
