@@ -29,12 +29,21 @@ then
     exit 1
 fi
 
+if [ -d "tags/"$version"" ]
+then
+    echo "Version $version is already deployed."
+    exit 1
+fi
+
+gitTip="You should've already pushed version $version to the remote git repo."
+
 trunkVersionLine=$(grep '^* Version' trunk/arc.php)
 trunkVersion=${trunkVersionLine/* Version: /''}
 
 if [[ "$version" != "$trunkVersion" ]]
 then
-    echo "Version ($version) does not match the version in trunk/arc.php ($trunkVersion)"
+    echo "Version $version does not match the version in trunk/arc.php ($trunkVersion)"
+    echo $gitTip
     exit 1
 fi
 
@@ -43,7 +52,8 @@ readmeVersion=${readmeVersionLine/Stable tag: /''}
 
 if [[ "$version" != "$readmeVersion" ]]
 then
-    echo "Version ($version) does not match the version in trunk/readme.txt ($readmeVersion)"
+    echo "Version $version does not match the version in trunk/readme.txt ($readmeVersion)"
+    echo $gitTip
     exit 1
 fi
 
