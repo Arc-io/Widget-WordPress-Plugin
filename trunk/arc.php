@@ -42,7 +42,7 @@ function arc_reverse_proxy () {
     $WIDGET_ORIGIN = 'https://arc.io';
     $method = $_SERVER['REQUEST_METHOD'];
     $path = strtok($_SERVER["REQUEST_URI"], '?');
-    $SW_PROXY_PATH = '/arc-sw';
+    $SW_PROXY_PATH = '/arc-sw.js';
     $WIDGET_PROXY_PATH = '/arc-widget';
 
     if (in_array($method, ['GET', 'HEAD'])) {
