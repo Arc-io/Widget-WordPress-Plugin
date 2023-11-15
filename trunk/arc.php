@@ -43,7 +43,7 @@ function arc_reverse_proxy () {
     $method = $_SERVER['REQUEST_METHOD'];
     $path = strtok($_SERVER["REQUEST_URI"], '?');
     $SW_PROXY_PATH = '/arc-sw.js';
-    $WIDGET_PROXY_PATH = '/widget.js';
+    $WIDGET_PROXY_PATH = '/arc-widget';
 
     if (in_array($method, ['GET', 'HEAD'])) {
         if ($path === $SW_PROXY_PATH) {
